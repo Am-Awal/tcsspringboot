@@ -29,7 +29,7 @@ public class Book {
 	private String author;
 	private String isbn;
 	
-	@OneToOne(mappedBy = "book" ,fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "book" ,fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private Set<Page> pages = new HashSet<>();
 
 }
