@@ -15,7 +15,7 @@ import com.tcs.springbootmvcdemo.interceptor.GuestInterceptor;
 
 @Configuration
 @EnableWebMvc // it activates the mvc env (@requestbody, controller, response body, requestmapping, @valid, ...)
-@ComponentScan("com.tcs.mvcdemo")
+@ComponentScan("com.tcs.springbootmvcdemo")
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
 	@Override
