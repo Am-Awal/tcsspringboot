@@ -1,4 +1,4 @@
-package com.tcs.springbootdemo;
+package com.tcs.springbootmvcdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

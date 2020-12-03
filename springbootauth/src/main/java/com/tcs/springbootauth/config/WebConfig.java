@@ -1,21 +1,21 @@
-
-package com.tcs.springbootmvcdemo.config;
+package com.tcs.springbootauth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+//import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.tcs.springbootmvcdemo.interceptor.AdminInterceptor;
-import com.tcs.springbootmvcdemo.interceptor.GuestInterceptor;
+import com.tcs.springbootauth.interceptor.AdminInterceptor;
+import com.tcs.springbootauth.interceptor.GuestInterceptor;
 
 @Configuration
-@EnableWebMvc // it activates the mvc env (@requestbody, controller, response body, requestmapping, @valid, ...)
-@ComponentScan("com.tcs.springbootmvcdemo")
+@EnableWebMvc
+@ComponentScan("com.tcs.springbootauth")
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
 	@Override
