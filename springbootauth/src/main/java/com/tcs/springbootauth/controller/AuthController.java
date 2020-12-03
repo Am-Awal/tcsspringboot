@@ -1,4 +1,4 @@
-package com.tcs.springbootmvcdemo.controller;
+package com.tcs.springbootauth.controller;
 
 import javax.validation.Valid;
 
@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tcs.springbootmvcdemo.model.Login;
-import com.tcs.springbootmvcdemo.repository.LoginRepository;
+import com.tcs.springbootauth.model.User;
+import com.tcs.springbootauth.repository.UserRepository;
 
 @Controller
 @RequestMapping(path="/auth")
 public class AuthController {
 	
 	@Autowired
-	LoginRepository loginRepository;
+	UserRepository userRepository;
 	@GetMapping("/login.html")
 	public String getLoginPage() {
 		return "login";
 	}
 	
 	@PostMapping("/login.html")
-	public ModelAndView validateLogin(@ModelAttribute @Valid Login login, BindingResult result) {
-		System.out.println("hello from validatelogin " +login);
+	public ModelAndView validateLogin(@ModelAttribute @Valid User user, BindingResult result) {
+		System.out.println("hello from validatelogin " +user);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		if(result.hasErrors()) {
@@ -39,15 +39,17 @@ public class AuthController {
 			return modelAndView;
 		}
 		
-		if(login.equals(
-				loginRepository.findById(login.getUserName()).get()
-				)) {
+		if(user.equals(
+				userRepository.findByEmail(user.getUserName()).get(0)
+						)) {
 			System.out.println("success");
+			modelAndView.setViewName("guest");
 		}else {
 			System.out.println("fail");
+			modelAndView.setViewName("login");
 		}
 		//modelAndView.setViewName("redirect:/dashboard");
-		modelAndView.setViewName("guest");
+		//modelAndView.setViewName("guest");
 
 		return modelAndView;
 	}
