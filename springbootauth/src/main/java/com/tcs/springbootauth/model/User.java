@@ -38,6 +38,7 @@ public class User {
 	 
 	     private String email;
 	     private String userName;
+	     private String password;
 	     
 	     //one user can have many roles
 	     @ManyToMany

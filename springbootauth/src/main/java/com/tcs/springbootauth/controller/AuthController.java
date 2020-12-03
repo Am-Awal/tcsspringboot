@@ -39,17 +39,18 @@ public class AuthController {
 			return modelAndView;
 		}
 		
-		if(user.equals(
-				userRepository.findByEmail(user.getUserName()).get(0)
-						)) {
+		if(	userRepository.existsByUserName((user.getUserName())
+			)&&(
+			user.getPassword().equals(
+				userRepository.findByUserName(user.getUserName()).get(0).getPassword()
+								))) {
 			System.out.println("success");
 			modelAndView.setViewName("guest");
 		}else {
 			System.out.println("fail");
 			modelAndView.setViewName("login");
 		}
-		//modelAndView.setViewName("redirect:/dashboard");
-		//modelAndView.setViewName("guest");
+
 
 		return modelAndView;
 	}
