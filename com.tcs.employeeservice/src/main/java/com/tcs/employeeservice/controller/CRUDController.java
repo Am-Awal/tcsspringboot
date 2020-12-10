@@ -5,36 +5,23 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tcs.employeeservice.model.Employee;
-//import com.tcs.springbootemployee.model.Organization;
 import com.tcs.employeeservice.repository.EmployeeRepository;
-//import com.tcs.springbootemployee.repository.OrganizationRepository;
 
-@Controller
-@RequestMapping(path="/auth")
-public class AuthController {
+public class CRUDController {
+	
 	
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
-	//@Autowired
-	//OrganizationRepository organizationRepository;
-	
-	@GetMapping("/findbyid.html")
-	public String getFindByIdPage() {
-		return "findbyid";
-	}
-		
-	@PostMapping("/findbyid.html")
-	public ModelAndView validateLogin(@ModelAttribute @Valid Employee employee, BindingResult result) {
+	@PostMapping("/findemployeebyid.html")
+	public ModelAndView 
+	findEmployeeById(@ModelAttribute @Valid	Employee employee, BindingResult result) {
 		System.out.println("hello from findbyid " +employee);
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -43,7 +30,7 @@ public class AuthController {
 				modelAndView.addObject(e.getField(), e.getDefaultMessage());
 				System.out.println(e.getDefaultMessage()+ " "+e.getField());});
 					
-			modelAndView.setViewName("findbyid");
+			modelAndView.setViewName("findemployeebyid");
 			return modelAndView;
 		}
 		
@@ -51,31 +38,47 @@ public class AuthController {
 			System.out.println("Employee exists");
 			
 			Optional<Employee> found = employeeRepository.findById(employee.getId());
-			String dept = "No department set";
-			String org = "No organization set";
+			//String depts = "No departments set";
+			//String emps = "No employees set";
 			
-			//new Employee(3, org1, dep1, "Emp one", 23, "Analyst");
+			
 			modelAndView.addObject("name", found.get().getName());
 			modelAndView.addObject("id", found.get().getId());
-			modelAndView.addObject("age", found.get().getAge());
-			modelAndView.addObject("position", found.get().getPosition());
-			
-			if(found.get().getOrganizationId()==null) {
-				modelAndView.addObject("organizationId", org);
-			}else modelAndView.addObject("organizationId", found.get().getOrganizationId());
-			
-			if(found.get().getDepartmentId()==null) {
-				modelAndView.addObject("departmentId", dept);
-			} else modelAndView.addObject("departmentId", found.get().getDepartmentId());
-			
+			//modelAndView.addObject("address", found.get().getAddress());
+
 			
 			modelAndView.setViewName("employeefound");
 		}else {
 			System.out.println("Employee id not found");
-			modelAndView.setViewName("findbyid");
+			modelAndView.setViewName("findemployeebyid");
 		}
-
-
+		return modelAndView;
+	}
+	
+	@PostMapping("/addemployee.html")
+	public ModelAndView 
+	addEmployee(@ModelAttribute @Valid	Employee employee, BindingResult result) {
+		System.out.println("hello from add employee " +employee);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if(result.hasErrors()) {
+			result.getFieldErrors().forEach(e->{
+				modelAndView.addObject(e.getField(), e.getDefaultMessage());
+				System.out.println(e.getDefaultMessage()+ " "+e.getField());});
+					
+			modelAndView.setViewName("addemployee");
+			return modelAndView;
+		}
+		
+		if(employeeRepository.findById(employee.getId()).isEmpty()) {
+			employeeRepository.save(employee);
+			modelAndView.setViewName("registrationSuccess");
+			System.out.println("success");
+		}else {
+			System.out.println("employee already exists");
+			modelAndView.setViewName("registration");
+		}
+	
 		return modelAndView;
 	}
 	
@@ -95,9 +98,9 @@ public class AuthController {
 		
 		if(employeeRepository.existsById( employee.getId())) {
 			System.out.println("Employee Exists");
-			long empId = employee.getId();
+			long employeeId = employee.getId();
 			
-			modelAndView.addObject("id", empId);
+			modelAndView.addObject("id", employeeId);
 			employeeRepository.deleteById(employee.getId());
 			System.out.println("Employee Deleted");
 			
@@ -113,7 +116,7 @@ public class AuthController {
 	
 	@PostMapping("/updateemployee.html")
 	public ModelAndView updateEmployee(@ModelAttribute @Valid Employee employee, BindingResult result) {
-		System.out.println("hello from validatelogin " +employee);
+		System.out.println("hello from update employee " +employee);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		if(result.hasErrors()) {
