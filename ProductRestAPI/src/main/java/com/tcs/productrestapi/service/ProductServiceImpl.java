@@ -36,7 +36,6 @@ public class ProductServiceImpl implements ProductService {
 	public Optional<Product> getProductById(int id) {
 		// TODO Auto-generated method stub
 		
-		
 		return productRepository.findById(id);
 	}
 
