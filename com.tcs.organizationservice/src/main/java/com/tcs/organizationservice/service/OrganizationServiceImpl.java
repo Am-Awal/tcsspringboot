@@ -21,29 +21,23 @@ public class OrganizationServiceImpl implements OrganizationService {
 
 
 	@Override
-	public String addOrganization(Organization organization) {
+	public Organization addOrganization(Organization organization) {
 		// TODO Auto-generated method stub
 		Organization organization2 = null;
 		try {
 			organization2 = organizationRepository.save(organization);
-			return "success";
+			return organization2;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "fail";
+			return null;
 		}
 	}
 
 	@Override
-	public String updateOrganization(long id) {
+	public void deleteOrganization(long id) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String deleteOrganization(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		organizationRepository.deleteById(id);;
 	}
 
 	@Override
@@ -52,11 +46,24 @@ public class OrganizationServiceImpl implements OrganizationService {
 		return organizationRepository.findById(id);
 	}
 
+	@Override
+	public Optional<Organization> getOrganizationById(long organizationId) {
+		// TODO Auto-generated method stub
+		return organizationRepository.findById(organizationId);
+	}
+
 	/*@Override
 	public Optional<List<Employee>> getEmployees() {
 		// TODO Auto-generated method stub
 		return null;
-	}*/
+	}
+	
+	@Override
+	public Optional<List<Product>> getProducts() {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable(productRepository.findAll());
+	}
+	*/
 
 	/*@Override
 	public Optional<List<Department>> getDepartments() {

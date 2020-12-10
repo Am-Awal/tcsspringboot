@@ -10,12 +10,12 @@ import com.tcs.organizationservice.model.Organization;
 public interface OrganizationService {
 	
 
-	public String addOrganization(Organization organization);
-	public String updateOrganization(long id);
-	public String deleteOrganization(long id);
+	public Organization addOrganization(Organization organization);
+	public void deleteOrganization(long id);
 	public Optional<Organization> findById(long id);
 	//public Optional<List<Employee>> getEmployees();
 	//public Optional<List<Department>> getDepartments();
+	public Optional<Organization> getOrganizationById(long organizationId);
 
 
 }
