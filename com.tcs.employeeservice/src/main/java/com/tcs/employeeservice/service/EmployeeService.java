@@ -7,11 +7,10 @@ import com.tcs.employeeservice.model.Employee;
 
 public interface EmployeeService {
 	
-	public String addEmployee(Employee employee);
-	public String updateEmployee(long id);
-	public String deleteEmployee(long id);
-	public Optional<Employee> findById(long id);
-	public Optional<List<Employee>> getEmployees();
-	public Optional<List<Employee>> findByOrganizationId(long id);
+	public Employee addEmployee(Employee employee);
+	public void deleteEmployee(long id);
+	//public Optional<Employee> findById(long id);
+	//public Optional<List<Employee>> getEmployees();
+	public Optional<Employee> getEmployeeById(long employeeId);
 
 }

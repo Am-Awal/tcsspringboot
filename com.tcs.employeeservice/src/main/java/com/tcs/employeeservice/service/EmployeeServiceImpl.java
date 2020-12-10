@@ -16,48 +16,32 @@ public class EmployeeServiceImpl implements EmployeeService {
 	EmployeeRepository employeeRepository;
 
 	@Override
-	public String addEmployee(Employee employee) {
+	public Employee addEmployee(Employee employee) {
 		// TODO Auto-generated method stub
 		Employee employee2 = null;
 		try {
 			employee2 = employeeRepository.save(employee);
-			return "success";
+			return employee2;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "fail";
+			return null;
 		}
 		
 	}
 
 	@Override
-	public String updateEmployee(long id) {
+	public void deleteEmployee(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		employeeRepository.deleteById(id);;
 	}
 
-	@Override
-	public String deleteEmployee(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	
 	@Override
-	public Optional<Employee> findById(long id) {
+	public Optional<Employee> getEmployeeById(long employeeId) {
 		// TODO Auto-generated method stub
-		return employeeRepository.findById(id);
-	}
-
-	@Override
-	public Optional<List<Employee>> getEmployees() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<List<Employee>> findByOrganizationId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeRepository.findById(employeeId);
 	}
 
 }
