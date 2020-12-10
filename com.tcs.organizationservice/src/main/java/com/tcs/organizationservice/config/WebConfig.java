@@ -1,4 +1,4 @@
-package com.tcs.springbootemployee.config;
+package com.tcs.organizationservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,8 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.tcs.springbootemployee.interceptor.AdminInterceptor;
-import com.tcs.springbootemployee.interceptor.GuestInterceptor;
+import com.tcs.organizationservice.interceptor.AdminInterceptor;
+import com.tcs.organizationservice.interceptor.GuestInterceptor;
 
 @Configuration
 @EnableWebMvc
