@@ -24,7 +24,7 @@
 		<a href="/auth/getemployees.html">Get Employees</a>	
 	</div><br>
 		<div>
-		<a href="//auth/findorganizationbyid.html">Find by organization id</a>	
+		<a href="/auth/findorganizationbyid.html">Find by organization id</a>	
 	</div><br>
 
 

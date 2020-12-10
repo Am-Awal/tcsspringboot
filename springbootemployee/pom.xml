@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.tcs</groupId>
 	<artifactId>springbootemployee</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springbootemployee</name>
 	<description>Demo project for Spring Boot</description>

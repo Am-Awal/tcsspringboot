@@ -1,4 +1,4 @@
-package com.tcs.authdemo;
+package com.tcs.springbootauth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

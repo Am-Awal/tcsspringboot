@@ -44,8 +44,6 @@ public class Employee {
 	public void setDepartment(Optional<Department> myDep) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	
+	}	
 
 }
