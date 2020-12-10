@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.tcs</groupId>
 	<artifactId>springbootauthdemo</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springbootauthdemo</name>
 	<description>Demo project for Spring Boot</description>
