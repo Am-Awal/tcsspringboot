@@ -115,7 +115,7 @@ public class AuthController {/*
 		return modelAndView;
 	}
 	
-	@PostMapping("/deleteemployee.html")
+	/*@PostMapping("/deleteemployee.html")
 	public ModelAndView deleteEmployee(@ModelAttribute @Valid Employee employee, BindingResult result) {
 		System.out.println("hello from delete employee " +employee);
 		
